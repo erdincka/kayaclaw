@@ -14,6 +14,7 @@ spec:
     - --context=git://github.com/erdincka/kayaclaw.git
     - --dockerfile=Dockerfile
     - --destination=registry.ai-application.garage.dubai/kayaclaw:latest
+    - --skip-tls-verify-registry=registry.ai-application.garage.dubai
     volumeMounts:
     - name: dockerfile-storage
       mountPath: /workspace
