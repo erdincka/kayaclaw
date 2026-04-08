@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko
+  namespace: dev
+  labels:
+    app: kudams
+spec:
+  restartPolicy: Never
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:latest
+    args:
+    - --context=git://.git
+    - --dockerfile=/workspace/Dockerfile
+    - --destination=docker.io/erdincka/kayaclaw:latest
+    volumeMounts:
+    - name: dockerfile-storage
+      mountPath: /workspace
+  volumes:
+  - name: dockerfile-storage
+    persistentVolumeClaim:
+      claimName: dockerfile-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dockerfile-pvc
+  namespace: dev
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs-csi
