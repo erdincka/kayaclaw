@@ -117,7 +117,8 @@ Inside the openclaw shell:
 
 - [ ] Add multiple sandboxes
 
-- [ ] Fix allowedOrigins (or wait for new release)
+- [ ] Fix allowedOrigins (or wait for new release).
+
   Until then, use `kubectl port-forward -n nemoclaw <workspace-pod-name> 18789:18789` to access the UI. Get pod name using `kubectl get pods -n nemoclaw`. Get token from workspace pod logs using `kubectl logs -n nemoclaw <workspace-pod-name> -c workspace | grep token`.
 
 ## Import Framework via CLI
@@ -130,6 +131,15 @@ Directly deploy EzAppConfig (edit `nemoclaw-ezapp.yaml` if you want to change th
 - Uses `gemma4:26b` as model
 - Uses `nemoclaw.${DOMAIN_NAME}` as HTTPS endpoint
 
+First, upload the helm chart to chartmuseum. Replace the pod name accordingly.
+
+```bash
+kubectl port-forward -n ez-chartmuseum-ns pods/chartmuseum-7d4dd5f974-7hfs4 8080:8080&
+curl -X POST http://localhost:8080/api/charts --data-binary "@nemoclaw-0.1.0.tgz"
+kill %1
+```
+
+Then deploy the EzAppConfig.
 
 ```bash
 kubectl apply -f nemoclaw-ezapp.yaml
