@@ -1,0 +1,9 @@
+ezua:
+  virtualService:
+    endpoint: "nemoclaw.${DOMAIN_NAME}" # Replace with your PCAI domain, this is a helm chart, not an ezappconfig so variables will not be substituted
+    istioGateway: "istio-system/ezaf-gateway"
+workspace:
+    endpoint: ollama.ollama.svc:11434 # or your openai endpoint
+    token: dummy # API TOKEN if required
+    model: gemma4:e4b # Model Name
+    agent_name: myclaw # custom agent name (default: ai-assistant)

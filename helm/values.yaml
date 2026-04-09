@@ -1,0 +1,10 @@
+ezua:
+  virtualService:
+    endpoint: "nemoclaw.${DOMAIN_NAME}"
+    istioGateway: "istio-system/ezaf-gateway"
+
+workspace:
+    endpoint: "" # host:port (do not use http:// or /v1)
+    token: "none" 
+    model: "gemma4:26b"
+    agent_name: "ai-assistant"

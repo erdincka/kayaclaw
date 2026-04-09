@@ -1,6 +1,0 @@
-{
-  "storage-driver": "fuse-overlayfs",
-  "data-root": "/var/lib/docker",
-  "iptables": true,
-  "ip6tables": false
-}
