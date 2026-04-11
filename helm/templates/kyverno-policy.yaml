@@ -1,3 +1,4 @@
+{{- if or .Values.authService.enabled .Values.adminService.enabled .Values.adminPortal.enabled }}
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:

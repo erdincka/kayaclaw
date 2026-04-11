@@ -104,6 +104,8 @@ spec:
               value: "skip"
             - name: NEMOCLAW_ACCEPT_THIRD_PARTY_SOFTWARE
               value: "1"
+            - name: CHAT_UI_URL
+              value: "https://{{ .Values.ezua.virtualService.endpoint }}/"
           volumeMounts:
             - name: docker-socket
               mountPath: /var/run
