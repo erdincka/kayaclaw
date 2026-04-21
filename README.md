@@ -1,6 +1,6 @@
 # Nemoclaw on PCAI
 
-Not ready for use!!!
+Use with care!!
 
 ## Deploy
 
@@ -14,15 +14,11 @@ Not ready for use!!!
 
 - Provide namespace (nemoclaw)
 
+- Configure for your endpoint and settings, see [values](./.values.example) for examples.
+
 - Wait ~5-10 minutes (depending on internet speed to download packages)
 
-- Connect to the workspace container:
-
-```bash
-kubectl exec -it -n nemoclaw <workspace-pod-name> -- bash
-```
-
-- Check the Debugging section below.
+- It should be available on the configured endpoint
 
 ### Manual Installation (Using helm)
 
@@ -50,7 +46,8 @@ Sandbox container logs:
 
   OpenClaw UI (tokenized URL; treat it like a password)
   Port 18789 must be forwarded before opening this URL.
-  http://127.0.0.1:18789/#token=a7fd105ae5253d6fc8aee3599711bf80ccaa74875c072787d1c6a67778cba874
+  http://127.0.0.1:18789/#token=???????????????
+  https://claw.<your.domain>/#token=??????????????
   ──────────────────────────────────────────────────
 
   ...
@@ -117,9 +114,9 @@ Inside the openclaw shell:
 
 - [ ] Add multiple sandboxes
 
-- [ ] Fix allowedOrigins (or wait for new release).
+- [X] Fix allowedOrigins (or wait for new release).
 
-  Until then, use `kubectl port-forward -n nemoclaw <workspace-pod-name> 18789:18789` to access the UI. Get pod name using `kubectl get pods -n nemoclaw`. Get token from workspace pod logs using `kubectl logs -n nemoclaw <workspace-pod-name> -c workspace | grep token`.
+  ~~Until then, use `kubectl port-forward -n nemoclaw <workspace-pod-name> 18789:18789` to access the UI. Get pod name using `kubectl get pods -n nemoclaw`. Get token from workspace pod logs using `kubectl logs -n nemoclaw <workspace-pod-name> -c workspace | grep token`.~~
 
 ## Import Framework via CLI
 
