@@ -104,8 +104,14 @@ spec:
               value: "skip"
             - name: NEMOCLAW_ACCEPT_THIRD_PARTY_SOFTWARE
               value: "1"
+            # need this to allow controlUI headers to be validated
+            # - name: "OPENCLAW_GATEWAY_ALLOWED_ORIGINS"
+            #   value: "[\"*\"]"
+              # value: "['http://{{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local:18789/', 'https://{{ .Values.ezua.virtualService.endpoint }}']"
+            # need this to allow virtual service redirection to work
             - name: CHAT_UI_URL
-              value: "https://{{ .Values.ezua.virtualService.endpoint }}/"
+              # value: "http://{{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local:18789/"
+              value: "https://{{ .Values.ezua.virtualService.endpoint }}"
           volumeMounts:
             - name: docker-socket
               mountPath: /var/run
